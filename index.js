@@ -16,7 +16,7 @@ var geodist = "1mi"
 var geocodestr = geolong + ',' + geolat + ',' + geodist;
 
 var params = {screen_name: 'nodejs'};
-client.get('search/tweets', {q: 'filter:images', geocode:geocodestr}, function(error, tweets, response) {
+client.get('search/tweets', {q: 'filter:images since:2016-10-28', geocode:geocodestr, result_type:"recent"}, function(error, tweets, response) {
    console.log(tweets)
    tweets.statuses.forEach(function(status) {
      if(status.entities.media !== undefined) {
