@@ -11,7 +11,7 @@ try {
 
 var client = new Twitter(config.TwitterConfig);
 
-client.stream('statuses/filter', {locations: '-2.272625,53.457745,-2.192287,53.507594'},  function(stream) {
+client.stream('statuses/filter', {locations: '-2.380943,53.438467,-2.025261,53.664464'},  function(stream) {
   stream.on('data', function(tweet) {
     if(tweet.entities.media !== undefined) {
       tweet.entities.media.forEach(function(media) {
