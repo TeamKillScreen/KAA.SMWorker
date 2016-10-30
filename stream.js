@@ -17,7 +17,9 @@ client.stream('statuses/filter', {locations: '-2.380943,53.438467,-2.025261,53.6
       tweet.entities.media.forEach(function(media) {
         if(media.type == "photo") {
           console.log(media.media_url)
-          console.log(tweet.place.bounding_box.coordinates[0][0])
+
+          var long = tweet.place.bounding_box.coordinates[0][0][0]
+          var lat = tweet.place.bounding_box.coordinates[0][0][1]
 
           request.get(media.media_url, function (error, response, body) {
             if (!error && response.statusCode == 200) {
@@ -27,7 +29,7 @@ client.stream('statuses/filter', {locations: '-2.380943,53.438467,-2.025261,53.6
 
                 console.log(filename);
 
-                requestData = { content: data, filename: filename}
+                requestData = { content: data, filename: filename, long: long, lat: lat}
 
                 request({
                   url: config.KAAAPIUrl,
